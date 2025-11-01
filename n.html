@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>metamsk wallet intregation</title>
+</head>
+<body>
+    <input type="button" id="connectButton" value="Connect to MetaMask" onclick="web3MetaOpen()">
+    <script>
+        async function web3MetaOpen() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    const account = accounts[0];
+                    alert('Connected account: ' + account);
+                } catch (error) {
+                    console.error('User rejected the request.');
+                }
+            } else {
+                alert('MetaMask is not installed. Please install it to use this feature.');
+            }
+        }</script>
+</body>
+</html>
